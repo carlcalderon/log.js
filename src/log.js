@@ -17,7 +17,7 @@ var logging =
 // OPTIONS:
 {
 	title   : 'log.js',	// log title
-	verbose : false,	// logging (on/off)
+	verbose : true,     // logging (on/off)
 	level   : 6
 	/*
 		0 system
