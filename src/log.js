@@ -18,7 +18,7 @@ var logging =
 {
 	title   : 'log.js',	// log title
 	verbose : false,	// logging (on/off)
-	level   : 5
+	level   : 6
 	/*
 		0 system
 		1 critical
@@ -26,6 +26,7 @@ var logging =
 		3 warnings
 		4 info
 		5 debug
+		6 all
 	*/
 };
 
@@ -37,12 +38,13 @@ var logging =
  * Method is equal to console#log().
  * @param msg   Any form of message.
  *				Optional prefixes:
- *				x System
- *				c Critical
- *				e Error
- *				w Warning
- *				i Informational
- *				d Debug
+ *				x   System
+ *				c   Critical
+ *				e   Error
+ *				w   Warning
+ *				i   Informational
+ *				d   Debug
+ *  			n/a Undefined type
  */
 function log( msg )
 {
@@ -62,18 +64,18 @@ function log( msg )
 				var func    = 'log';
 				switch( msg.substr(0,1) )
 				{	
-					case 'x': prefix = 'SYSTEM';    level = 0; break;
-					case 'c': prefix = 'CRITICAL';  level = 1; func = 'error'; break;
-					case 'e': prefix = 'ERROR';     level = 2; func = 'error'; break;
-					case 'w': prefix = 'WARNING';   level = 3; func = 'warn';  break;
-					case 'i': prefix = 'INFO';      level = 4; func = 'info';  break;
+					case '0' : case 'x': prefix = 'SYSTEM';    level = 0; break;
+					case '1' : case 'c': prefix = 'CRITICAL';  level = 1; func = 'error'; break;
+					case '2' : case 'e': prefix = 'ERROR';     level = 2; func = 'error'; break;
+					case '3' : case 'w': prefix = 'WARNING';   level = 3; func = 'warn';  break;
+					case '4' : case 'i': prefix = 'INFO';      level = 4; func = 'info';  break;
 					default :
 					case 'd': prefix = 'DEBUG';     level = 5; func = 'debug'; break;
 				}
 				if( level <= logging.level )
 					console[func]( logging.title + '#'+prefix+' - ' + msg.substr(2) );
 			}
-			else console.log( logging.title + ' - ' + msg );
+			else if( 6 <= logging.level ) console.log( logging.title + ' - ' + msg );
 		}
 	}
 }
@@ -86,6 +88,6 @@ function log( msg )
  */
 function dump( obj )
 {
-	if(logging)
-		console.log(obj)
+	if( logging.verbose )
+		console.log( obj )
 }
