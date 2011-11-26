@@ -10,6 +10,7 @@ Logging in Javascript takes alot of effort and time to keep clean and structured
 #### Untyped log #### 
 
 A log type is not required to perform a basic log.
+
 ```html
 <script>
 	log('Hello World!');
@@ -17,7 +18,9 @@ A log type is not required to perform a basic log.
 ```
 
 #### Other type of logs #### 
+
 The power of log.js lay within the prefix. First char in the requested message defines the type. "e" for Error, "w" for warning, etc. These log types (levels) may be filtered out with the capital full tag of the message type, such as "CRITICAL" or "INFO".
+
 ```html
 <script>
 	log('d This is a debug message');
@@ -56,6 +59,7 @@ Every log type is defined by a level. Higher levels are less important. 0 is def
 #### Shut up! ####
 
 Logging may also be completely turned off.
+
 ```html
 <script>
 	log('This message will be displayed.');
