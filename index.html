@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>log.js</title>
+	<script type="text/javascript" src="js/log-min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/master.css" type="text/css" charset="utf-8">
+</head>
+<body>
+
+	<div id="content">
+		
+		<h1>log.js</h1>
+		<p>This Javascript library aids development in an easy way. Small efforts with a lot of possibilities. Logging with log.js may be done at any point in any structure.</p>
+		<hr></hr>
+		<h2>Give it a try</h2>
+		<p>Use the controls below to give log.js a try.<br/>Open up your console, write your prefix and/or message and press enter.</p>
+		<div id="controls">
+			<code class="comment">
+				/*<br/>
+				&nbsp;&nbsp;Enter a message and press enter.<br/>
+				&nbsp;&nbsp;Optional prefixes:<br/>
+				&nbsp;&nbsp;x - System<br/>
+				&nbsp;&nbsp;c - Critical<br/>
+				&nbsp;&nbsp;e - Error<br/>
+				&nbsp;&nbsp;w - Warning<br/>
+				&nbsp;&nbsp;i - Info<br/>
+				&nbsp;&nbsp;d - Debug<br/>
+				*/</code><br/>
+			<code>log("<input type="text" name="message" value="i Hello World" id="message">");</code>
+		</div>
+		<hr></hr>
+		<h2>Implementation</h2>
+		<p>As many other libraries for Javascript; log.js is easily implemented with just one line of markup.</p>
+		<pre>&lt;script src="js/log-min.js"&gt;&lt;/script&gt;</pre>
+		<h3>Easy as pie</h3>
+		<p>To perform a log message, just use the <code>log</code> method from anywhere you want.</p>
+		<pre>log("Hello World!");	<span class="comment">// output: log.js - Hello World</comment></pre>
+		<h3>Put your label on it</h3>
+		<p>You may set a personal label on the messages by setting the <code>logging.title</code> string.</p>
+		<pre>logging.title = "Google";<br/><br/>log("d User performed search");	<span class="comment">// output: Google - User performed search</comment></pre>
+	</div>
+	<script>
+	$("#message").keyup(function(event){
+	  if(event.keyCode == 13){
+	    log(this.value);
+	  }
+	});
+	</script>
+</body>
+</html>

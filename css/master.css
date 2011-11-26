@@ -1,0 +1,87 @@
+* { margin: 0; padding: 0 }
+
+body
+{
+	background: rgb(75,86,87);
+}
+#content
+{
+	padding: 20px;
+	width: 600px;
+	height: auto;
+	margin: 50px auto;
+	background: rgb(210,201,176);
+	box-shadow: 0 8px 19px rgba(0,0,0,0.5);
+	border-radius: 20px;
+	font: normal normal normal 0.8em Arial, sans-serif;
+	color: #111;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+}
+ #content > h1
+ {
+	font-size: 3em;
+ 	margin-bottom: 10px;
+ }
+ #content > h2
+ {
+ 	margin: 10px 0;
+ }
+ #content > h3
+ {
+ 	margin-top: 15px;
+ }
+ #content > hr
+ {
+ 	width: 500px;
+ 	margin: 20px auto;
+ 	border: none;
+ 	height: 2px;
+ 	box-shadow:inset 0px 1px 0px rgba(0,0,0,0.1);
+ 	background: rgba(255,255,255,0.2);
+ }
+ #content #controls
+ {
+	margin: 10px 0;
+	padding: 20px;
+	border-radius: 15px;
+	background: rgba(255,255,255,0.5);
+ 	box-shadow:inset 0 1px 0px rgba(0,0,0,0.3);
+ }
+  #content #controls code
+  {
+	font-size:1.2em;
+ 	background: rgba(255,255,255,0.0);
+  }
+  #content #controls code input
+  {
+	font:inherit;
+	border: none;
+ 	padding: 2px 4px;
+ 	border-radius: 3px;
+ 	box-shadow:inset 0 1px 0px rgba(0,0,0,0.3);
+  }
+  #content > #controls > code > input:focus
+  {
+	outline: none;
+  }
+ #content code
+ {
+ 	font-size: 1.2em;
+ 	width: auto;
+ 	border-radius: 3px;
+ 	padding: 2px 4px;
+ 	background: rgba(255,255,255,0.5);
+ }
+ #content .comment
+ {
+	color:rgba(0,0,0,0.5);
+ }
+#content pre
+{	
+ 	background: rgba(255,255,255,0.6);
+	border-radius: 15px;
+	padding: 20px;
+	font-size: 1.2em;
+	margin: 10px 0;
+ 	box-shadow:inset 0 1px 0px rgba(0,0,0,0.3);
+}
