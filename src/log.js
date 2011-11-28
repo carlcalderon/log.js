@@ -1,4 +1,4 @@
-/* log.js, r2 - Copyright 2011 Carl Calderon - Licensed under the Apache License, Version 2.0 */
+/*! log.js, r3 - Copyright 2011 Carl Calderon - Licensed under the Apache License, Version 2.0 */
 var logging = 
 // OPTIONS:
 {
@@ -45,9 +45,9 @@ function log( msg )
 			if( msg.match !== undefined )
 			if( msg.match( /^[a-z]{1}\s/ ) )
 			{
-				var prefix  = '';
-				var level   = 0;
-				var func    = 'log';
+				var prefix  = '',
+					level   = 0,
+					func    = 'log';
 				switch( msg.substr(0,1) )
 				{	
 					case '0' : case 'x': prefix = 'SYSTEM';    level = 0; break;
