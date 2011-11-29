@@ -31,15 +31,26 @@
 			<code><span class="method">log</span>(<span class="string">"<input type="text" name="message" value="i Hello World" id="message">"</span>);</code>
 		</div>
 		<hr></hr>
+
 		<h2>Implementation</h2>
 		<p>As many other libraries for Javascript; log.js is easily implemented with just one line of markup.</p>
 		<pre>&lt;<span class="script">script</span> <span class="attr">src</span>=<span class='string'>"js/log-min.js"</span>&gt;&lt;/<span class="script">script</span>&gt;</pre>
+
 		<h3>Easy as pie</h3>
 		<p>To perform a log message, just use the <code>log</code> method from anywhere you want.</p>
-		<pre><span class="method">log</span>(<span class="string">"Hello World!"</span>);	<span class="comment">// output: log.js - Hello World</comment></pre>
+		<pre><span class="method">log</span>(<span class="string">"Hello World!"</span>);	<span class="comment">// output: log.js | Hello World</comment></pre>
+
 		<h3>Put your label on it</h3>
 		<p>You may set a personal label on the messages by setting the <code>logging.title</code> string.</p>
-		<pre>logging.title = <span class="string">"Google"</span>;<br/><br/><span class="method">log</span>(<span class="string">"d User performed search"</span>);	<span class="comment">// output: Google#DEBUG - User performed search</comment></pre>
+		<pre>logging.title = <span class="string">"Google"</span>;<br/><br/><span class="method">log</span>(<span class="string">"d User performed search"</span>);	<span class="comment">// output: Google#DEBUG | User performed search</comment></pre>
+
+		<h3>Reduce output</h3>
+		<p>Often upon project releases, you want to remove all of the traces used during debug/development. With log.js, this quest becomes easy. Using <code>logging.level</code>, log.js can be setup so that only important messages will be traced, such as system, criticals and errors.</p>
+		<pre><span class="comment">// these will be traced</span><br/><span class="method">log</span>(<span class="string">"w Something happened."</span>);<br/><span class="method">log</span>(<span class="string">"c This is critical!"</span>);<br/><br/><span class="comment">// reduce the the logging span ("2" includes errors but not warnings) </span><br/>logging.level = <span class="num">2</span>;<br/><br/><span class="method">log</span>(<span class="string">"w Something happened again."</span>); <span class="comment">// this will be ignored.</span><br/><span class="method">log</span>(<span class="string">"c Do something!"</span>); <span class="comment">// this will still be shown</span><br/></pre>
+
+		<h3>What about Objects?</h3>
+		<p>The default console supports objects through the <code>console.log</code> method and so does log.js. The method <code>dump</code> is a shorthand version of the same functionallity but with the integrated option to turn these traces off by setting the <code>logging.verbose</code> option to false.</p>
+		<pre>obj = {foo:<span class="string">"bar"</span>};<br/><br/>console.<span class="method">log</span>(obj);<br/><span class="comment">// and...</span><br/><span class="method">dump</span>(obj);<br/><span class="comment">// ...will output the same thing</span></pre>
 	</div>
 	<script>
 	$("#message").keyup(function(event){
