@@ -1,10 +1,12 @@
-/*! log.js, r3 - Copyright 2011 Carl Calderon - Licensed under the Apache License, Version 2.0 */
+/*! log.js, r4 - Copyright 2011 Carl Calderon - Licensed under the Apache License, Version 2.0 */
 var logging = 
 // OPTIONS:
 {
-	title   : 'log.js',	// log title
-	verbose : true,     // logging (on/off)
-	level   : 6
+	title     : 'log.js',	// log title
+	verbose   : true,     // logging (on/off)
+	align	  : true,		// align all message
+	_ff_align : navigator.userAgent.toLowerCase().indexOf('firefox') > -1,	// firefox ruin alignment
+	level     : 6
 	/*
 		0 system
 		1 critical
@@ -41,27 +43,31 @@ function log( msg )
 			console.log(logging.title + ' - log message was "undefined".');
 		else
 		{
-			msg = String(msg);
+			msg 		= String(msg);
+			var align	= logging.align?(logging._ff_align?'\t\t  ':'         '):'',
+				prefix  = '',
+				level   = 0,
+				func    = 'log';
 			if( msg.match !== undefined )
 			if( msg.match( /^[a-z]{1}\s/ ) )
 			{
-				var prefix  = '',
-					level   = 0,
-					func    = 'log';
 				switch( msg.substr(0,1) )
 				{	
-					case '0' : case 'x': prefix = 'SYSTEM';    level = 0; break;
-					case '1' : case 'c': prefix = 'CRITICAL';  level = 1; func = 'error'; break;
-					case '2' : case 'e': prefix = 'ERROR';     level = 2; func = 'error'; break;
-					case '3' : case 'w': prefix = 'WARNING';   level = 3; func = 'warn';  break;
-					case '4' : case 'i': prefix = 'INFO';      level = 4; func = 'info';  break;
-					default :
-					case 'd': prefix = 'DEBUG';     level = 5; func = 'debug'; break;
+					case '0' : case 'x': prefix = 'SYSTEM';    align=!!logging._ff_align?'\t  ':'  ';   level = 0; break;
+					case '1' : case 'c': prefix = 'CRITICAL';  align=!!logging._ff_align?'  ':'';     level = 1; func = 'error'; break;
+					case '2' : case 'e': prefix = 'ERROR';     align=!!logging._ff_align?'\t  ':'   ';  level = 2; func = 'error'; break;
+					case '3' : case 'w': prefix = 'WARNING';   align=!!logging._ff_align?'\t':' ';    level = 3; func = 'warn';  break;
+					case '4' : case 'i': prefix = 'INFO';      align=!!logging._ff_align?'\t':'    '; level = 4; func = 'info';  break;
+					default :  case 'd': prefix = 'DEBUG';     align=!!logging._ff_align?'\t  ':'   ';  level = 5; func = 'debug'; break;
 				}
 				if( level <= logging.level )
-					console[func]( logging.title + '#'+prefix+' - ' + msg.substr(2) );
+				{
+					if( !logging.align )
+						align = '';
+					console[func]( logging.title + '#'+prefix + align + ' | ' + msg.substr(2) );
+				}
 			}
-			else if( 6 <= logging.level ) console.log( logging.title + ' - ' + msg );
+			else if( 6 <= logging.level ) console.log( logging.title + align + ' | ' + msg );
 		}
 	}
 }
