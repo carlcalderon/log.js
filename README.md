@@ -7,6 +7,8 @@ Logging in Javascript takes alot of effort and time to keep clean and structured
 
 ### Examples ###
 
+[Try it out!](http://carlcalderon.github.com/log.js/)
+
 #### Untyped log ####
 
 A log type is not required to perform a basic log.
