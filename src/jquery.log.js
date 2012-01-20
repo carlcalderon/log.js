@@ -26,7 +26,7 @@
 	 * 
 	 * @param obj Any object
 	 */
-	$.fn.dump = function( obj )
+	$.dump = function( obj )
 	{
 		if( logging.verbose )
 			console.log( obj )
@@ -48,7 +48,7 @@
 	*				d   Debug
 	*  			n/a Undefined type
 	*/
-	$.fn.log = function( msg ) {
+	$.log = function( msg ) {
 		if( logging.verbose )
 		if( console ) if( console.log ) 
 		{
@@ -60,7 +60,7 @@
 				{
 					if(msg.settings === undefined )
 					{
-						$.fn.dump(msg);
+						$.dump(msg);
 					}
 					else
 					{
