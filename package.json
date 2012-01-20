@@ -1,0 +1,39 @@
+{
+    "name": "log",
+    "version": "1.0.4",
+    "title": "jQuery.log()",
+    "author": {
+        "name": "Carl Calderon",
+        "url": "https://github.com/carlcalderon"
+    },
+    "licenses": [
+        {
+            "type": "Apache2",
+            "url": "LICENSE"
+        }
+    ],
+    "dependencies": {
+        "jquery": "1"
+    },
+    "description": "The main purpose of this plugin is ease debugging with simple prefix logging behavior.",
+    "keywords": [
+        "debug",
+        "log",
+        "logging",
+        "console",
+        "console.log",
+        "dump",
+        "var_dump",
+        "debugging"
+    ],
+    "homepage": "http://carlcalderon.github.com/log.js/",
+    "maintainers": [
+        {
+            "name": "Carl Calderon",
+            "url": "https://github.com/carlcalderon"
+        }
+    ],
+    "files": [
+        "build/jquery.log-min.js"
+    ]
+}
