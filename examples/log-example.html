@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>log.js - test</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" charset="utf-8" />
+	<script type="text/javascript" charset="utf-8" src="../build/log-min.js"></script>
+	<script type="text/javascript">
+	function logAll()
+	{
+		log('Hello World!');
+		log('d Debug message.');
+		log('i Informational message.');
+		log('w Warning.');
+		log('e Error message.');
+		log('c Critical message.');
+		log('x System message');
+	}
+	</script>
+</head>
+<body>
+	<div style="width:300px;margin:50px auto;">
+		<h1>Try them out</h1>
+		<p>Don't forget to open up your console.</p>
+		
+		<p>
+		<button class="btn" 			name="basic"	onclick="log('Hello World!')"            >Basic</button>
+		<button class="btn" 			name="debug" 	onclick="log('d Debug message.')"        >Debug (d)</button>
+		<button class="btn btn-info" 	name="info" 	onclick="log('i Informational message.')">Info (i)</button>
+		</p>
+		<p>
+		<button class="btn btn-warning" name="warn" 	onclick="log('w Warning.')"              >Warning (w)</button>
+		<button class="btn btn-danger" 	name="error" 	onclick="log('e Error message.')"        >Error (e)</button>
+		<button class="btn btn-danger" 	name="critical" onclick="log('c Critical message.')"     >Critical (c)</button>
+		</p>
+		<p>
+		<button class="btn" 			name="system" 	onclick="log('x System message')"        >System (x)</button>
+		<button class="btn btn-primary" name="all" 		onclick="logAll()"                       >All at once</button>
+		</p>
+	</div>
+</body>
+</html>
