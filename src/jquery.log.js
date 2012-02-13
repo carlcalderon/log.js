@@ -1,23 +1,54 @@
-/*! log.js, r4 - Copyright 2011 Carl Calderon - Licensed under the Apache License, Version 2.0 */
+/*! log.js, r5 - Copyright 2011 Carl Calderon - Licensed under the Apache License, Version 2.0 */
 (function( $ ){
 	
 	var logging = 
 	// OPTIONS:
 	{
-		title     : 'log.js',	// log title
-		verbose   : true,     	// logging (on/off)
-		align	  : true,		// align all message
-		_ff_align : navigator.userAgent.toLowerCase().indexOf('firefox') > -1,	// firefox ruin alignment
-		level     : 6
-		/*
-			0 system
-			1 critical
-			2 errors
-			3 warnings
-			4 info
-			5 debug
-			6 all
-		*/
+		title     : 'log.js', // log title
+		verbose   : true,     // logging (on/off)
+		align	  : true,     // align all message
+		align_id  : navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ? 'ff' : (navigator.userAgent.toLowerCase().indexOf('chrome') > -1 ? 'ch' : 'normal'),	// firefox and chrome ruin alignment
+		level     : 6,/* 0 system
+	                     1 critical
+	                     2 errors
+	                     3 warnings
+	                     4 info
+	                     5 debug
+	                     6 all
+		              */
+		_alignments :
+		{
+			normal :
+			{
+				none     : '         ',
+				system   : '  ',
+				critical : '',
+				error    : '   ',
+				warning  : ' ',
+				info     : '    ',
+				debug    : '   '
+			},
+			ff :
+			{
+				none     : '\t\t  ',
+				system   : '\t  ',
+				critical : '  ',
+				error    : '\t  ',
+				warning  : '\t',
+				info     : '\t',
+				debug    : '\t  '
+			},
+			ch :
+			{
+				none     : '           ',
+				system   : '    ',
+				critical : '',
+				error    : '   ',
+				warning  : '   ',
+				info     : '      ',
+				debug    : '     '
+			}
+		}
 	};
 	
 	/**
@@ -69,7 +100,7 @@
 					}
 				}
 				msg 		= String(msg);
-				var align	= logging.align?(logging._ff_align?'\t\t  ':'         '):'',
+				var align	= logging.align?( logging._alignments[logging.align_id].none ):'',
 					prefix  = '',
 					level   = 0,
 					func    = 'log';
@@ -78,12 +109,12 @@
 				{
 					switch( msg.substr(0,1) )
 					{	
-						case '0' : case 'x': prefix = 'SYSTEM';    align=!!logging._ff_align?'\t  ':'  ';   level = 0; break;
-						case '1' : case 'c': prefix = 'CRITICAL';  align=!!logging._ff_align?'  ':'';     level = 1; func = 'error'; break;
-						case '2' : case 'e': prefix = 'ERROR';     align=!!logging._ff_align?'\t  ':'   ';  level = 2; func = 'error'; break;
-						case '3' : case 'w': prefix = 'WARNING';   align=!!logging._ff_align?'\t':' ';    level = 3; func = 'warn';  break;
-						case '4' : case 'i': prefix = 'INFO';      align=!!logging._ff_align?'\t':'    '; level = 4; func = 'info';  break;
-						default :  case 'd': prefix = 'DEBUG';     align=!!logging._ff_align?'\t  ':'   ';  level = 5; func = 'debug'; break;
+						case '0' : case 'x': prefix = 'SYSTEM';    align=logging._alignments[logging.align_id].system;   level = 0; break;
+						case '1' : case 'c': prefix = 'CRITICAL';  align=logging._alignments[logging.align_id].critical; level = 1; func = 'error'; break;
+						case '2' : case 'e': prefix = 'ERROR';     align=logging._alignments[logging.align_id].error;    level = 2; func = 'error'; break;
+						case '3' : case 'w': prefix = 'WARNING';   align=logging._alignments[logging.align_id].warning;  level = 3; func = 'warn';  break;
+						case '4' : case 'i': prefix = 'INFO';      align=logging._alignments[logging.align_id].info;     level = 4; func = 'info';  break;
+						default :  case 'd': prefix = 'DEBUG';     align=logging._alignments[logging.align_id].debug;    level = 5; func = 'debug'; break;
 					}
 					if( level <= logging.level )
 					{
